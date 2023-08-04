@@ -1,7 +1,7 @@
 
 class SimpleChatBot:
     def __init__(self):
-        self.name: str = "PythoBot"
+        self.name: str = "PythonBot"
         self.creation_date: int = 2021
 
     def greet(self):
@@ -14,24 +14,25 @@ class SimpleChatBot:
 
     @staticmethod
     def guess_user_age():
-        print('Let me guess your age.\nEnter remainders of dividing your age by 3, 5 and 7.')
-        try:
-            reminder_by_3, reminder_by_5, reminder_by_7 = int(input()), int(input()), int(input())
-            age: int = (reminder_by_3 * 70 + reminder_by_5 * 21 + reminder_by_7 * 15) % 105
-            print(f"Your age is {age}; that's a good time to start programming!")
-        except ValueError:
-            print("ONLY integers allowed. Try again")
-            return SimpleChatBot.guess_user_age()
+        age = False
+        while not age:
+            print('Let me guess your age.\nEnter remainders of dividing your age by 3, 5 and 7.')
+            try:
+                age: int = (int(input()) * 70 + int(input()) * 21 + int(input()) * 15) % 105
+                print(f"Your age is {age}; that's a good time to start programming!")
+            except ValueError:
+                print("ONLY integers allowed. Try again")
 
     @staticmethod
     def count_to_number():
-        try:
-            num: int = int(input('Now I will prove to you that I can count to any number you want.\n'))
-            for n in range(num + 1):
-                print(n, '!')
-        except ValueError:
-            print("ONLY integers allowed. Try again")
-            return SimpleChatBot.count_to_number()
+        num = False
+        while not num:
+            try:
+                num: int = int(input('Now I will prove to you that I can count to any number you want.\n'))
+                for n in range(num + 1):
+                    print(n, '!')
+            except ValueError:
+                print("ONLY integers allowed. Try again")
 
     @staticmethod
     def test_user_knowledge():
@@ -42,13 +43,9 @@ class SimpleChatBot:
     3. To determine the execution time of a program.
     4. To interrupt the execution of a program.""")
 
-        while True:
-            answer: str = input()
-            if answer != "1":
-                print('Please, try again.')
-            else:
-                print('Completed, have a nice day!')
-                break
+        while input() != "1":
+            print('Please, try again.')
+        print('Completed, have a nice day!')
 
 
 def main():
